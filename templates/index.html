@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+
+    <link rel="stylesheet" href="{%static '/style.css' %}">
+</head>
+    <body>
+        <div class="center">
+            <div class="container">
+                {% for message in messages %}
+                    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                        <strong>MESSAGE:</strong>{{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {%endfor%}
+                <h1>My app</h1>
+
+
+                {% if user.is_authenticated %}
+
+                <h3 class="filetext">Hello {{fname}} ,</h3>
+                <h4 class="filetext">You are sucessfully logged in</h4>
+                <button class="button" type="submit" ><a href="/signout"> SignOut </a> </button>
+
+                {% else %}
+
+                <form class="txt_field" action="/signin" method='post'>
+                    {% csrf_token %}
+                    <div class='data'>
+                        <label for="">Enter username</label>
+                        <input type="text" id='username' name='username' placeholder='Enter your username' Required>
+                    </div>
+                    <br>
+                    <div class='data'>
+                        <label for="">Enter Password</label>
+                        <input type="password" id='password' name='pass1' placeholder='Enter your password' Required>
+                    </div>
+                    <br>
+                    <button class="button" type='submit'>Login</button>
+
+                </form>
+
+                <div class="pass"><a href="/forgotpass">Forgot Password?</a></div>
+
+                <div class="signup_link">
+                    Not a member? <a href="/signup">Signup</a>
+                </div>
+
+                
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>

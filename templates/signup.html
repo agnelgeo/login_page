@@ -1,0 +1,55 @@
+{% load static  %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static '/style.css' %}">
+</head>
+    <body>
+        <div class="center">
+            <div class='container'>
+                <h1>Sign Up</h1>
+
+                <form class="txt_field" action="/signup" method='post'>
+                {% csrf_token %}
+                    <div class='data'>
+                        <label for="">Enter a username</label>
+                        <input type="text" id='username' name='username' placeholder='Enter a username(only letters and numbers)' Required>
+                    </div>
+                        <br>
+                    <div class='data'>
+                        <label for="">Enter your First name</label>
+                        <input type="text" id='fname' name='fname' placeholder='Enter your First name' Required>
+                    </div>
+                        <br>
+                    <div class='data'>
+                        <label for="">Enter your Last name</label>
+                        <input type="text" id='lname' name='lname' placeholder='Enter your Last name' Required>
+                    </div>
+                        <br>
+                    <div class='data'>
+                        <label for="">Enter your E-mail</label>
+                        <input type="email" id='email' name='email' placeholder='Enter your E-mail' Required>
+                    </div>
+                        <br>
+                    <div class='data'>
+                        <label for="">Create your Password</label>
+                        <input type="password" id='pass1' name='pass1' placeholder='Create your Password' Required>
+                    </div>
+                        <br>
+                    <div class='data'>    
+                        <label for="">Confirm password</label>
+                        <input type="password" id='pass2' name='pass2' placeholder='Confirm password' Required>
+                    </div>
+                        <br>
+                        <button class="button" type='submit'>Sign Up</button>
+
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
